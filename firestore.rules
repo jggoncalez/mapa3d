@@ -1,0 +1,37 @@
+rules_version = '2';
+
+// Regras de segurança do Cloud Firestore (seção 25 do documento).
+//
+// - Leitura da coleção `locais`: pública (o app lista os locais sem login).
+// - Criar, editar e excluir: somente usuários AUTENTICADOS (administradores).
+// - Favoritar: qualquer pessoa pode alterar APENAS o campo `favorito`.
+// - Todo o resto é negado.
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function dadosValidos(d) {
+      return d.nome is string && d.nome.size() > 0 && d.nome.size() <= 100
+          && d.categoria is string
+          && d.cidade is string
+          && d.avaliacao is number && d.avaliacao >= 0 && d.avaliacao <= 5
+          && d.distancia is number && d.distancia >= 0
+          && d.horario is string
+          && d.descricao is string
+          && d.favorito is bool;
+    }
+
+    match /locais/{localId} {
+      allow read: if true;
+
+      allow create: if request.auth != null
+                    && dadosValidos(request.resource.data);
+
+      allow update: if (request.auth != null
+                        && dadosValidos(request.resource.data))
+                    || request.resource.data.diff(resource.data)
+                         .affectedKeys().hasOnly(['favorito']);
+
+      allow delete: if request.auth != null;
+    }
+  }
+}

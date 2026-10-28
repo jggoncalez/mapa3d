@@ -1,0 +1,29 @@
+name: mapa3d
+description: "Mapa de Locais - Flutter + Firebase Cloud Firestore (avaliação formativa SENAI)."
+publish_to: "none"
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # Firebase (tutorial, seção 9.6). Se preferir, rode:
+  #   flutter pub add firebase_core cloud_firestore firebase_auth
+  # que troca "any" pelas versões atuais.
+  firebase_core: any
+  cloud_firestore: any
+  firebase_auth: any # extensão: login de administradores
+
+  # Mapa real (MapLibre GL dentro de um WebView, sem chave de API)
+  webview_flutter: ^4.10.0
+  webview_flutter_web: ^0.2.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true

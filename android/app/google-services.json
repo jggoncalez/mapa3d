@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "294326746455",
+    "project_id": "projetomapa-e9a60",
+    "storage_bucket": "projetomapa-e9a60.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:294326746455:android:f5bfc15ee427f89fee1212",
+        "android_client_info": {
+          "package_name": "com.senai.mapa3d"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDjFMiLAODfVzz06atIaCXV_1CNUsDKgKc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
